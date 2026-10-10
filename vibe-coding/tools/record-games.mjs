@@ -266,16 +266,24 @@ const SCENES = {
       });
       await rec.mouse('mouseReleased', 884 - sec(5) * 2, 520);
 
-      // 2 — Te voet over het plein, langs een praatgroepje en voorbijgangers.
+      // 2 — Te voet door de winkelstraat (de straat met de meeste winkels, aan de
+      // zuidkant van het plein), met de camera laag achter de groep. Op het plein
+      // kantelt de camera langzaam omhoog naar de Sun Tree.
       console.log('  lopen');
-      await enter('?plek=whitestone&lopen&nep-timers&start=-4.5,9&kijk=0,7,10');
+      await enter('?plek=whitestone&lopen&nep-timers&start=1.7,19&kijk=0,3,12');
       await middag(12);
       await rec.forward(30);
       const key = (type, k = 'w') => rec.run(`window.dispatchEvent(new KeyboardEvent('${type}', { key: '${k}', code: 'Key${k.toUpperCase()}', bubbles: true })); 1`);
       await key('keydown');
-      await rec.forward(sec(0.4));
-      await rec.record(sec(3));
+      await rec.forward(sec(0.3));
+      await rec.record(sec(5));
+      const KANTEL = sec(2.2);
+      await rec.mouse('mouseMoved', 640, 600);
+      await rec.mouse('mousePressed', 640, 600);
+      await rec.record(KANTEL, '', { between: (i) => rec.mouse('mouseMoved', 640, 600 - i * 1.4, { buttons: 1 }) });
+      await rec.mouse('mouseReleased', 640, 600 - KANTEL * 1.4);
       await key('keyup');
+      await rec.record(sec(0.8));
 
       // 3 — Een gevecht: drie spreuken van dichtbij. Ook de timers van het spel lopen
       // op de nepklok (?nep-timers), dus elke beurt loopt vloeiend en voorspelbaar.
