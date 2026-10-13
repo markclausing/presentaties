@@ -256,7 +256,9 @@
      Timer met budget per hoofdstuk (2 · 5 · 10 · 5 · 5 = 27 min + marge)
      --------------------------------------------------------------- */
   const timerEl = $('#timer');
-  const budgetEnd = { 1: 2, 2: 7, 3: 17, 4: 22, 5: 27 };
+  // Het einde van elk hoofdstuk in minuten, opgeteld uit de data-min van de hoofdstukbalk
+  const budgetEnd = {};
+  chaps.reduce((t, c) => (budgetEnd[c.dataset.ch] = t + +c.dataset.min), 0);
   let t0 = null, acc = 0, run = false;
   const elapsed = () => acc + (run ? Date.now() - t0 : 0);
   const mmss = ms => { const s = Math.floor(ms / 1000); return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`; };
@@ -284,7 +286,7 @@
     if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(k)) { e.preventDefault(); go(1); }
     else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); go(-1); }
     else if (k === 'Home' || k === '0') scrollTo({ top: 0, behavior: 'smooth' });
-    else if (/^[1-5]$/.test(k)) $('#ch' + k).scrollIntoView({ behavior: 'smooth' });
+    else if (/^[1-9]$/.test(k) && $('#ch' + k)) $('#ch' + k).scrollIntoView({ behavior: 'smooth' });
     else if (k === 'n' || k === 'N') notesPanel.classList.toggle('open');
     else if (k === 't' || k === 'T') toggleTimer();
     else if (k === 'r' || k === 'R') resetTimer();

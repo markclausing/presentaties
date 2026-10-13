@@ -1,0 +1,87 @@
+/* Aanvullingen voor de conceptversie: hoofdstuk "output over outcome" */
+
+.ch-5 { --accent: #ff7a45; }
+.ch-6 { --accent: var(--violet); }
+
+/* Concept-label, rechtsboven */
+.concept-badge {
+  position: fixed; top: 30px; right: var(--gutter); z-index: 55;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 99px; border: 1px dashed #ff7a45; color: #ff7a45;
+  background: rgba(7,7,11,.75); backdrop-filter: blur(6px);
+}
+
+/* Output → outcome → impact */
+.chain { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: stretch; margin-top: 5vh; }
+.chain .link { border: 1px solid var(--line); border-radius: 20px; padding: 24px; background: var(--panel); position: relative; }
+.chain .link .t { font-family: var(--mono); font-size: .7em; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.chain .link h3 { margin: 10px 0 10px; font-size: clamp(26px, 2.6vw, 46px); }
+.chain .link p { color: var(--ink-2); font-size: .92em; }
+.chain .link.out h3 { color: var(--ink-2); }
+.chain .link.oc { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--panel)); }
+.chain .link.oc h3, .chain .link.im h3 { color: var(--accent); }
+.chain .arr { align-self: center; font-family: var(--mono); color: var(--ink-3); font-size: 1.6em; }
+.chain .link .ex { margin-top: 14px; font-family: var(--mono); font-size: .7em; color: var(--ink-3); line-height: 1.6; }
+
+/* De schaar: wat we kunnen bouwen vs wat we kunnen valideren */
+.scissors { width: 100%; height: auto; overflow: visible; }
+.scissors .grid line { stroke: var(--line); stroke-width: 1; }
+.scissors .axis { fill: var(--ink-3); font-family: var(--mono); font-size: 12px; }
+.scissors .build, .scissors .valid { fill: none; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 2.4s var(--ease); }
+.scissors .build { stroke: var(--accent); }
+.scissors .valid { stroke: var(--ink-2); transition-delay: .5s; }
+.scissors .gap { fill: url(#hatch); opacity: 0; transition: opacity 1.2s 2s; }
+.scissors .lbl { font-family: var(--body); font-size: 15px; font-weight: 600; opacity: 0; transition: opacity .8s 2.2s; }
+.scissors .lbl.b { fill: var(--accent); } .scissors .lbl.v { fill: var(--ink-2); } .scissors .lbl.g { fill: #fff; font-size: 17px; }
+.in .scissors .build, .in .scissors .valid { stroke-dashoffset: 0; }
+.in .scissors .gap { opacity: 1; }
+.in .scissors .lbl { opacity: 1; }
+
+/* Bewijs */
+.evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 5vh; }
+.ev { border: 1px solid var(--line); border-radius: 20px; padding: 26px; background: var(--panel); }
+.ev .src { font-family: var(--mono); font-size: .7em; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
+.ev .big { font-family: var(--display); font-weight: 800; font-size: clamp(44px, 5vw, 90px); letter-spacing: -.04em; line-height: 1; margin: 14px 0 6px; }
+.ev .big small { font-size: .38em; letter-spacing: -.01em; color: var(--ink-2); font-weight: 600; }
+.ev p { color: var(--ink-2); font-size: .92em; }
+.ev .vs { display: flex; gap: 22px; align-items: baseline; flex-wrap: wrap; }
+
+/* SAFe */
+.safe { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; margin-top: 4vh; align-items: start; }
+.formula { border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px; background: var(--panel); font-family: var(--mono); }
+.formula .row { display: flex; align-items: center; gap: 14px; font-size: clamp(14px, 1.15vw, 19px); }
+.formula .frac { display: inline-grid; text-align: center; }
+.formula .frac span:first-child { border-bottom: 1px solid var(--ink-3); padding-bottom: 4px; }
+.formula .frac span:last-child { padding-top: 4px; }
+.formula .target { margin-top: 14px; font-size: .78em; color: var(--ink-3); }
+.meter { margin-top: 18px; position: relative; height: 12px; border-radius: 12px; background: #23233a; overflow: hidden; }
+.meter i { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, var(--lime), #ff7a45); transition: width 2.6s var(--ease) .6s; }
+.in .meter i { width: 100%; }
+.meter-l { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .66em; color: var(--ink-3); margin-top: 6px; }
+.fair { margin-top: 18px; font-size: .82em; color: var(--ink-3); border-left: 2px solid var(--line); padding-left: 14px; }
+
+/* Twee lussen */
+.loops { width: 100%; max-width: 560px; height: auto; justify-self: center; overflow: visible; }
+.loops .outer { fill: none; stroke: var(--ink-2); stroke-width: 3; stroke-dasharray: 1100 282; }
+.loops .gapmark { fill: none; stroke: #ff7a45; stroke-width: 3; stroke-dasharray: 6 8; }
+.loops .inner { fill: none; stroke: var(--accent); stroke-width: 5; stroke-dasharray: 40 12; transform-origin: 280px 280px; animation: spin 2.2s linear infinite; }
+.loops .slow { transform-origin: 280px 280px; animation: spin 40s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loops text { font-family: var(--body); fill: var(--ink); font-size: 16px; font-weight: 600; }
+.loops .sm { font-family: var(--mono); fill: var(--ink-3); font-size: 12px; font-weight: 400; }
+.loops .warn { fill: #ff7a45; }
+
+/* Wat het van ons vraagt */
+.asks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 4.5vh; }
+.ask { border: 1px solid var(--line); border-radius: 18px; padding: 22px; background: var(--panel); }
+.ask .from { font-family: var(--mono); font-size: .66em; color: var(--ink-3); text-decoration: line-through; text-decoration-color: #ff7a45; }
+.ask h3 { margin: 8px 0 10px; font-size: clamp(19px, 1.6vw, 28px); }
+.ask p { color: var(--ink-2); font-size: .88em; }
+
+@media (max-width: 700px) {
+  .concept-badge { top: 18px; }
+  .chain { grid-template-columns: 1fr; }
+  .chain .arr { transform: rotate(90deg); justify-self: center; }
+  .evidence, .safe, .asks { grid-template-columns: 1fr; }
+  .loops { max-width: 100%; }
+}
