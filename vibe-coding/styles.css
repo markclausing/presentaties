@@ -670,3 +670,57 @@ html, body { overflow-x: clip; }
   .dummie { max-width: 78% !important; }
 }
 .facts { grid-template-columns: minmax(0, 1fr); }
+
+/* --------------------------------------------------------------------------
+   Quality gates: checks-paneel in GitHub-stijl en een tijdlijn van de pijplijn
+   -------------------------------------------------------------------------- */
+.checks-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 2.6vw; margin-top: 3vh; align-items: start; }
+.gh { background: #0d1117; border: 1px solid #30363d; border-radius: 12px; overflow: hidden; font-family: -apple-system, "Segoe UI", "Helvetica Neue", sans-serif; }
+.gh-head { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; padding: 12px 16px; border-bottom: 1px solid #30363d; background: #161b22; }
+.gh-head b { color: #e6edf3; font-size: 15px; display: block; }
+.gh-head small { color: #8d96a0; font-size: 12px; }
+.chk { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; padding: 7px 16px; border-bottom: 1px solid #21262d; }
+.chk:last-child { border-bottom: 0; }
+.chk b { color: #e6edf3; font-size: 13px; font-weight: 600; display: block; }
+.chk small { color: #8d96a0; font-size: 11.5px; }
+.chk .dur { color: #8d96a0; font-size: 12px; font-variant-numeric: tabular-nums; }
+.gh .ic { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; font-size: 11px; font-weight: 700; }
+.gh .ic.ok { background: #238636; color: #fff; }
+.gh .ic.neu { background: transparent; border: 1.5px solid #8d96a0; color: #8d96a0; }
+.gh .ic.big { width: 26px; height: 26px; font-size: 15px; }
+
+.gantt { position: relative; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 12px; background: var(--panel); }
+.g-axis { display: flex; justify-content: space-between; margin-left: 132px; font-family: var(--mono); font-size: 10px; color: var(--ink-3); margin-bottom: 8px; }
+.g-row { display: grid; grid-template-columns: 124px 1fr; gap: 8px; align-items: center; height: 22px; }
+.g-lbl { font-family: var(--mono); font-size: 10.5px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.g-track { position: relative; height: 10px; border-radius: 6px; background: #1c1c2a; }
+.g-track .bar { position: absolute; top: 0; bottom: 0; left: var(--l); width: var(--w); border-radius: 6px; background: #3fb950; transform-origin: left; transform: scaleX(0); transition: transform .9s var(--ease); transition-delay: calc(var(--i) * 120ms + 300ms); }
+.g-track .bar.long { background: linear-gradient(90deg, #3fb950, #2ea043); }
+.g-track .bar.neu { background: #8d96a0; }
+.in .g-track .bar { transform: none; }
+.g-merge { position: absolute; top: 30px; bottom: 8px; left: calc(16px + 132px + (100% - 32px - 132px) * var(--m)); width: 0; border-left: 2px dashed var(--pink); }
+.g-merge span { position: absolute; bottom: -2px; left: 6px; white-space: nowrap; font-family: var(--mono); font-size: 10.5px; color: var(--pink); background: var(--panel); padding: 1px 5px; border-radius: 4px; }
+.checks-slide .chips { margin-top: 14px; }
+.callout.honest { border-left-color: var(--pink); margin-top: 14px; font-size: .86em; }
+
+@media (max-width: 700px) {
+  .checks-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .chk { padding: 6px 12px; }
+  .chk small { display: none; }
+  .g-axis { margin-left: 92px; }
+  .g-row { grid-template-columns: 84px 1fr; }
+  .g-lbl { font-size: 9px; }
+  .g-merge { left: calc(16px + 92px + (100% - 32px - 92px) * var(--m)); }
+}
+/* Compacter: naam en uitleg op één regel */
+.checks-slide { padding-top: 9vh; padding-bottom: 6vh; }
+.checks-slide .lede { margin-top: 1rem; }
+.checks-grid { margin-top: 2.4vh; }
+.chk { padding: 5px 14px; }
+.chk b { font-size: 12.5px; }
+.chk small { font-size: 11px; display: block; margin-top: 1px; line-height: 1.3; }
+.gh-head { padding: 9px 14px; }
+@media (min-width: 701px) and (max-height: 950px) {
+  .checks-slide h2 { font-size: clamp(36px, 4.4vw, 72px); }
+  .chk { padding: 4px 14px; }
+}

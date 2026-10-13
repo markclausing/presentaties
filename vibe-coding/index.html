@@ -240,7 +240,7 @@
   <div class="split">
     <div>
       <div class="kicker r">Security &amp; privacy</div>
-      <h2 class="r">Kwaliteit is <span class="hl">afgedwongen</span>, niet gehoopt</h2>
+      <h2 class="r">Kwaliteit wordt <span class="hl">gecontroleerd</span>, niet gehoopt</h2>
       <ul class="list">
         <li class="r" style="--d:1"><b>Local-first:</b> gezondheidsdata blijft op de telefoon. API-keys in de iOS Keychain, niet in de code.</li>
         <li class="r" style="--d:2"><b>Bring your own key:</b> de gebruiker kiest Gemini, OpenAI, Claude of Mistral.</li>
@@ -261,6 +261,50 @@
     </div>
   </div>
   <aside class="notes"><span class="t">Security · ~1 min · rond 7:00 ben je hier klaar</span>De vraag die jullie natuurlijk hebben: is het veilig? Ik heb een AI security review laten draaien met meerdere agents die elkaars bevindingen tegen de code verifiëren. Geen kritieke of hoge issues. Wel dingen die een mens had moeten zien, zoals de prompt met gezondheidsdata in de logs. <b>Les:</b> AI vindt ook AI-fouten, maar iemand moet de vragen stellen.</aside>
+</section>
+
+<section class="slide ch-2 checks-slide" data-ch="2">
+  <div class="kicker r">Een willekeurige PR · #366 · 1 oktober</div>
+  <h2 class="r wide">Elke PR door <span class="hl">dezelfde poort</span></h2>
+  <p class="lede r" style="--d:1">Een fix van de agent: 6 bestanden, +198 regels. Dit is wat GitHub er automatisch mee doet, als hobbyproject op een gratis account.</p>
+  <div class="checks-grid">
+    <div class="gh r" style="--d:1">
+      <div class="gh-head"><span class="ic ok big">✓</span><div><b>All checks have passed</b><small>8 successful, 1 neutral check</small></div></div>
+      <div class="chk r" style="--d:2"><span class="ic ok">✓</span><div><b>iOS CI / Doc Consistency</b><small>docs en architectuur-viewer kloppen met de code</small></div><span class="dur">4s</span></div>
+      <div class="chk r" style="--d:2"><span class="ic ok">✓</span><div><b>CodeQL / Analyze (actions)</b><small>security-scan van de workflows zelf</small></div><span class="dur">44s</span></div>
+      <div class="chk r" style="--d:3"><span class="ic ok">✓</span><div><b>iOS CI / Unit Tests</b><small>de logica: modellen, services, viewmodels</small></div><span class="dur">4m 59s</span></div>
+      <div class="chk r" style="--d:3"><span class="ic ok">✓</span><div><b>CodeQL / Analyze (swift)</b><small>security-scan van alle Swift-code</small></div><span class="dur">25m 5s</span></div>
+      <div class="chk r" style="--d:4"><span class="ic ok">✓</span><div><b>iOS CI / SwiftLint</b><small>stijl en verboden patronen, strict</small></div><span class="dur">19s</span></div>
+      <div class="chk r" style="--d:4"><span class="ic ok">✓</span><div><b>iOS CI / Concurrency Guard</b><small>geen nieuwe data-race-waarschuwingen</small></div><span class="dur">1m 14s</span></div>
+      <div class="chk r" style="--d:5"><span class="ic ok">✓</span><div><b>iOS CI / UI Tests</b><small>de happy paths in de simulator</small></div><span class="dur">14m 58s</span></div>
+      <div class="chk r" style="--d:5"><span class="ic ok">✓</span><div><b>iOS CI / Coverage Report</b><small>dekking per laag, als rapport</small></div><span class="dur">21s</span></div>
+      <div class="chk r" style="--d:6"><span class="ic neu">◦</span><div><b>code scanning / CodeQL</b><small>samenvatting van de meldingen</small></div><span class="dur">2s</span></div>
+    </div>
+    <div>
+      <div class="gantt r" style="--d:2">
+        <div class="g-axis"><span>0</span><span>5 min</span><span>10 min</span><span>15 min</span><span>20 min</span><span>25 min</span></div>
+        <div class="g-row"><span class="g-lbl">Doc Consistency</span><div class="g-track"><i class="bar" style="--l:0.00%;--w:0.70%;--i:0"></i></div></div>
+        <div class="g-row"><span class="g-lbl">Analyze (actions)</span><div class="g-track"><i class="bar" style="--l:0.00%;--w:2.91%;--i:1"></i></div></div>
+        <div class="g-row"><span class="g-lbl">Unit Tests</span><div class="g-track"><i class="bar" style="--l:0.40%;--w:19.79%;--i:2"></i></div></div>
+        <div class="g-row"><span class="g-lbl">Analyze (swift)</span><div class="g-track"><i class="bar long" style="--l:0.40%;--w:99.60%;--i:3"></i></div></div>
+        <div class="g-row"><span class="g-lbl">SwiftLint</span><div class="g-track"><i class="bar" style="--l:3.64%;--w:1.26%;--i:4"></i></div></div>
+        <div class="g-row"><span class="g-lbl">Concurrency Guard</span><div class="g-track"><i class="bar" style="--l:5.56%;--w:4.90%;--i:5"></i></div></div>
+        <div class="g-row"><span class="g-lbl">UI Tests</span><div class="g-track"><i class="bar long" style="--l:21.58%;--w:59.43%;--i:6"></i></div></div>
+        <div class="g-row"><span class="g-lbl">Coverage Report</span><div class="g-track"><i class="bar" style="--l:81.60%;--w:1.39%;--i:7"></i></div></div>
+        <div class="g-row"><span class="g-lbl">CodeQL</span><div class="g-track"><i class="bar neu" style="--l:2.32%;--w:0.70%;--i:8"></i></div></div>
+        <div class="g-merge" style="--m:0.0854"><span>gemerged na 2 min</span></div>
+      </div>
+      <div class="chips r" style="--d:4">
+        <span class="chip on">secret scanning + push protection</span>
+        <span class="chip on">Dependabot security updates</span>
+        <span class="chip on">CodeQL elke maandag</span>
+        <span class="chip on">release-please: versie + changelog uit de PR-titel</span>
+        <span class="chip">1.647 CI-runs</span>
+      </div>
+      <p class="callout honest r" style="--d:5"><b>Eerlijk is eerlijk:</b> branch protection staat níet aan. De checks draaien op elke PR, maar mergen gebeurt op afspraak (CLAUDE.md en ikzelf). Van de laatste 60 PR's werden er 12 gemerged voordat alles klaar was, zoals deze. Alle 60 werden uiteindelijk groen.</p>
+    </div>
+  </div>
+  <aside class="notes"><span class="t">Quality gates · ~1 min</span>Voor wie met GitHub werkt: dit draait automatisch op <b>elke</b> pull request, ook (juist) die van de agent. Lint, docs-check, een concurrency-baseline, unit- en UI-tests, coverage, en twee CodeQL-scans: op de code én op de workflows zelf. Parallel waar het kan, op volgorde waar het moet. Repo-breed staan secret scanning met push protection en Dependabot aan. <b>Vraag aan de zaal: hoeveel van onze teams hebben dit op elke PR?</b> En de stap die ik zelf nog niet heb gezet, en die change management wél zou eisen: van deze checks <b>required checks</b> maken, zodat rood technisch niet te mergen is. Deze PR werd na twee minuten gemerged, toen de UI-tests nog liepen.</aside>
 </section>
 
 <!-- ======================= 03 GAMES ======================= -->
@@ -539,7 +583,7 @@
     <div class="need">
       <div class="kicker r" style="margin:0">Wat we nodig hebben van tooling</div>
       <div class="r" style="--d:2"><span class="i">🧠</span><div><b>Geheugen van het project</b><small>README, ROADMAP, ARCHITECTURE, CLAUDE.md. Docs zijn niet meer voor mensen alleen.</small></div></div>
-      <div class="r" style="--d:3"><span class="i">🚦</span><div><b>Harde poorten</b><small>Lint, tests, security-scans. Rood = niet mergen, hoe overtuigend de agent ook klinkt.</small></div></div>
+      <div class="r" style="--d:3"><span class="i">🚦</span><div><b>Poorten die echt dicht kunnen</b><small>Lint, tests en security-scans als required checks, zodat rood technisch niet te mergen is, hoe overtuigend de agent ook klinkt. Bij mij nog op afspraak: de volgende stap.</small></div></div>
       <div class="r" style="--d:4"><span class="i">🗺️</span><div><b>Overzicht voor niet-programmeurs</b><small>Een architectuur-viewer die het verhaal vertelt. Niet regel voor regel, maar per bouwsteen.</small></div></div>
       <div class="r" style="--d:5"><span class="i">💸</span><div><b>Kosten &amp; limieten in beeld</b><small>Duur model voor regie, goedkoop model voor uitvoering. Tokens zijn het nieuwe budget.</small></div></div>
     </div>
