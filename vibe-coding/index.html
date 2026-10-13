@@ -9,16 +9,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Press+Start+2P&family=Cinzel:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="outcome.css">
 </head>
 <body>
 
 <!-- ======================= HUD ======================= -->
 <nav class="hud-top" id="chapters" aria-label="Hoofdstukken">
-  <div class="chap" data-ch="1" data-min="2"  style="--c:var(--cyan);--min:2"><span class="fill"></span>01 · Wat is vibe coding</div>
-  <div class="chap" data-ch="2" data-min="5"  style="--c:var(--lime);--min:5"><span class="fill"></span>02 · Hoe ik begon</div>
-  <div class="chap" data-ch="3" data-min="10" style="--c:var(--pink);--min:10"><span class="fill"></span>03 · De games</div>
-  <div class="chap" data-ch="4" data-min="5"  style="--c:var(--amber);--min:5"><span class="fill"></span>04 · Learnings</div>
-  <div class="chap" data-ch="5" data-min="5"  style="--c:var(--violet);--min:5"><span class="fill"></span>05 · De toekomst</div>
+  <div class="chap" data-ch="1" data-min="2" style="--c:var(--cyan);--min:2"><span class="fill"></span>01 · Wat is vibe coding</div>
+  <div class="chap" data-ch="2" data-min="5" style="--c:var(--lime);--min:5"><span class="fill"></span>02 · Hoe ik begon</div>
+  <div class="chap" data-ch="3" data-min="8" style="--c:var(--pink);--min:8"><span class="fill"></span>03 · De games</div>
+  <div class="chap" data-ch="4" data-min="4" style="--c:var(--amber);--min:4"><span class="fill"></span>04 · Learnings</div>
+  <div class="chap" data-ch="5" data-min="6" style="--c:#ff7a45;--min:6"><span class="fill"></span>05 · Output ≠ outcome</div>
+  <div class="chap" data-ch="6" data-min="5" style="--c:var(--violet);--min:5"><span class="fill"></span>06 · De toekomst</div>
 </nav>
 <div class="hud-bottom">
   <span class="timer" id="timer" title="T = start/pauze, R = reset">00:00 / 30:00</span>
@@ -31,7 +33,7 @@
     <h4>Bediening</h4>
     <div><kbd>→</kbd> <kbd>↓</kbd> <kbd>spatie</kbd> <kbd>PgDn</kbd> volgende</div>
     <div><kbd>←</kbd> <kbd>↑</kbd> <kbd>PgUp</kbd> vorige</div>
-    <div><kbd>1</kbd>–<kbd>5</kbd> spring naar hoofdstuk · <kbd>0</kbd> begin</div>
+    <div><kbd>1</kbd>–<kbd>6</kbd> spring naar hoofdstuk · <kbd>0</kbd> begin</div>
     <div><kbd>N</kbd> sprekersnotities · <kbd>T</kbd> timer start/pauze · <kbd>R</kbd> timer reset</div>
     <div><kbd>F</kbd> volledig scherm · <kbd>L</kbd> live game spelen (op game-slide)</div>
     <div><kbd>Esc</kbd> sluiten</div>
@@ -264,13 +266,13 @@
 <!-- ======================= 03 GAMES ======================= -->
 <section class="slide opener ch-3" data-ch="3" id="ch3">
   <div class="num" data-parallax>03</div>
-  <div class="kicker r">Hoofdstuk 3 · 10 minuten</div>
+  <div class="kicker r">Hoofdstuk 3 · 8 minuten</div>
   <h2 class="r arcade-title" style="--d:1;max-width:none">INSERT COIN</h2>
   <p class="lede r" style="--d:2">Toen werden de modellen beter. Zomer 2026: wat als ik iets bouw dat <i>niet</i> nuttig is, maar wel heel moeilijk?</p>
   <div class="stats r" style="--d:3;--cols:4">
     <div class="stat"><div class="n" data-count="6">6</div><div class="l">games in 8 weken</div></div>
-    <div class="stat"><div class="n" data-count="398">398</div><div class="l">commits</div></div>
-    <div class="stat"><div class="n" data-count="107795" data-fmt>107.795</div><div class="l">regels code</div></div>
+    <div class="stat"><div class="n" data-count="461">461</div><div class="l">commits</div></div>
+    <div class="stat"><div class="n" data-count="117493" data-fmt>117.493</div><div class="l">regels code</div></div>
     <div class="stat"><div class="n" data-count="0">0</div><div class="l">npm-packages in de browsergames</div></div>
   </div>
 </section>
@@ -466,9 +468,9 @@
       <p class="lede r" style="--d:2">Een rollenspel in de geest van <i>Baldur's Gate 3</i>, waarin de personages <b style="color:var(--ink)">écht met je praten</b>. Een AI speelt ze, zoals een goede spelleider aan tafel.</p>
       <div class="stats r" style="--d:3;--cols:2;max-width:560px">
         <div class="stat"><div class="n" data-count="6">6</div><div class="l">vrienden op GitHub</div></div>
-        <div class="stat"><div class="n" data-count="125">125</div><div class="l">issues: ideeën, bugs, vragen</div></div>
-        <div class="stat"><div class="n" data-count="115">115</div><div class="l">pull requests</div></div>
-        <div class="stat"><div class="n" data-count="9">9</div><div class="l">dagen oud</div></div>
+        <div class="stat"><div class="n" data-count="206">206</div><div class="l">issues: ideeën, bugs, vragen</div></div>
+        <div class="stat"><div class="n" data-count="181">181</div><div class="l">pull requests</div></div>
+        <div class="stat"><div class="n" data-count="12">12</div><div class="l">dagen oud</div></div>
       </div>
       <div class="avatars r" style="--d:4">
         <div class="a" data-gh="markclausing">M</div><div class="a">R</div><div class="a">W</div><div class="a">P</div><div class="a">J</div><div class="a">T</div>
@@ -476,7 +478,7 @@
     </div>
     <div class="r zoom" style="--d:3">
       <div class="screen" data-video="assets/video/prompt-machina.mp4" data-title="Prompt Machina">
-        <span class="badge rec">stad · lopen · gevecht · gesprek</span>
+        <span class="badge rec">stad · winkelstraat · gevecht · gesprek</span>
         <div class="slides">
           <img src="assets/img/rpg-whitestone-plein.jpg" alt=""><img src="assets/img/rpg-gevecht-in-beeld.jpg" alt=""><img src="assets/img/rpg-herberg-del-thoren.jpg" alt="">
         </div>
@@ -484,7 +486,7 @@
       <div class="chips"><span class="chip on">three.js WebGPU</span><span class="chip">Gemini speelt de NPC's</span><span class="chip">Cloudflare Workers</span><span class="chip">D&amp;D 5e-regels</span></div>
     </div>
   </div>
-  <aside class="notes"><span class="t">Prompt Machina · ~3 min (2 slides)</span>De hoogste ambitie: een 3D-RPG met AI-gestuurde personages, alleen of samen te spelen. In de video: de stad Whitestone uit het bronboek, een stukje lopen, een gevecht volgens de D&amp;D-regels, en een gesprek met herbergier Del dat <b>live door Gemini</b> wordt geschreven. Het bijzondere: het is een <b>samenwerking van zes vrienden</b>, de meesten geen programmeur. Robert verzon de naam. Iedereen draagt bij via GitHub-issues.</aside>
+  <aside class="notes"><span class="t">Prompt Machina · ~3 min (2 slides)</span>De hoogste ambitie: een 3D-RPG met AI-gestuurde personages, alleen of samen te spelen. In de video: de stad Whitestone uit het bronboek, de helden door de winkelstraat naar de Sun Tree, een gevecht volgens de D&amp;D-regels, en een gesprek met herbergier Del dat <b>live door Gemini</b> wordt geschreven. Het bijzondere: het is een <b>samenwerking van zes vrienden</b>, de meesten geen programmeur. Robert verzon de naam. Iedereen draagt bij via GitHub-issues.</aside>
 </section>
 
 <section class="slide ch-3" data-ch="3" style="--accent:var(--amber)">
@@ -503,13 +505,13 @@
     <figure class="s2 r" style="--d:6"><img data-zoom src="assets/img/rpg-thoren-ai-ingame.jpg" alt=""><figcaption>AI-gegenereerd 3D-model</figcaption></figure>
     <figure class="s2 r" style="--d:7"><img data-zoom src="assets/img/rpg-groep-in-de-stad.jpg" alt=""><figcaption>samen spelen</figcaption></figure>
   </div>
-  <aside class="notes"><span class="t">Werkwijze RPG · rond 17:00 ben je hier klaar</span>Dit is de echte les voor ons: <b>de bottleneck verschuift van bouwen naar beslissen</b>. Claude bouwt sneller dan zes mensen kunnen reviewen en testen. We moesten afspraken maken: wie keurt goed, hoeveel approvers per grootte, je eigen idee goedkeuren telt niet. Dat is gewoon… governance. Herkenbaar?</aside>
+  <aside class="notes"><span class="t">Werkwijze RPG · rond 15:00 ben je hier klaar</span>Dit is de echte les voor ons: <b>de bottleneck verschuift van bouwen naar beslissen</b>. Claude bouwt sneller dan zes mensen kunnen reviewen en testen. We moesten afspraken maken: wie keurt goed, hoeveel approvers per grootte, je eigen idee goedkeuren telt niet. Dat is gewoon… governance. Herkenbaar?</aside>
 </section>
 
 <!-- ======================= 04 LEARNINGS ======================= -->
 <section class="slide opener ch-4" data-ch="4" id="ch4">
   <div class="num" data-parallax>04</div>
-  <div class="kicker r">Hoofdstuk 4 · 5 minuten</div>
+  <div class="kicker r">Hoofdstuk 4 · 4 minuten</div>
   <h2 class="r" style="--d:1">Wat ik <span class="serif hl">geleerd</span> heb</h2>
 </section>
 
@@ -542,17 +544,163 @@
       <div class="r" style="--d:5"><span class="i">💸</span><div><b>Kosten &amp; limieten in beeld</b><small>Duur model voor regie, goedkoop model voor uitvoering. Tokens zijn het nieuwe budget.</small></div></div>
     </div>
   </div>
-  <aside class="notes"><span class="t">Bottlenecks &amp; tooling · ~2 min · rond 22:00 ben je hier klaar</span>Hoe hou je overzicht als je de code niet leest? Door het project een geheugen te geven, en door kwaliteit af te dwingen in de pijplijn in plaats van te hopen. En: ik betaal nu voor tokens zoals een team voor uren. Wat dat voor begrotingen betekent, is een interessante vraag.</aside>
+  <aside class="notes"><span class="t">Bottlenecks &amp; tooling · ~1,5 min · rond 19:00 ben je hier klaar</span>Hoe hou je overzicht als je de code niet leest? Door het project een geheugen te geven, en door kwaliteit af te dwingen in de pijplijn in plaats van te hopen. En: ik betaal nu voor tokens zoals een team voor uren. Wat dat voor begrotingen betekent, is een interessante vraag.</aside>
 </section>
 
-<!-- ======================= 05 TOEKOMST ======================= -->
+<!-- ======================= 05 OUTPUT ≠ OUTCOME ======================= -->
 <section class="slide opener ch-5" data-ch="5" id="ch5">
   <div class="num" data-parallax>05</div>
-  <div class="kicker r">Hoofdstuk 5 · 5 minuten</div>
-  <h2 class="r" style="--d:1">Waar gaat <span class="serif hl">dit</span> heen?</h2>
+  <div class="kicker r">Hoofdstuk 5 · 6 minuten</div>
+  <h2 class="r" style="--d:1">Output is gratis geworden. <span class="serif hl">Outcome</span> niet.</h2>
+  <p class="lede r" style="--d:2">Wat gebeurt er met een organisatie als bouwen geen bottleneck meer is?</p>
+  <aside class="notes"><span class="t">05 · Output ≠ outcome · 6 min</span>Tot nu toe ging het over wat ik kon <b>maken</b>. Dit hoofdstuk gaat over de vraag die daarna komt: heeft het ook iets <b>opgeleverd</b>? Mijn stelling: vibe coding lost een probleem op dat we al niet hadden, en maakt een probleem dat we wél hadden groter.</aside>
 </section>
 
 <section class="slide ch-5" data-ch="5">
+  <div class="kicker r">Drie woorden die we door elkaar gebruiken</div>
+  <h2 class="r wide">Opleveren is niet hetzelfde als <span class="hl">bereiken</span></h2>
+  <div class="chain">
+    <div class="link out r" style="--d:1"><div class="t">Output</div><h3>Wat we maken</h3><p>Features, pull requests, story points, releases.</p><div class="ex">→ hier maakt AI ons tien keer sneller</div></div>
+    <div class="arr r" style="--d:2">→</div>
+    <div class="link oc r" style="--d:3"><div class="t">Outcome</div><h3>Wat er verandert</h3><p>Het gedrag van mensen: de planner die sneller een monteur inzet, de klant die eerder aangesloten is.</p><div class="ex">→ hier wordt het niet sneller van</div></div>
+    <div class="arr r" style="--d:4">→</div>
+    <div class="link im r" style="--d:5"><div class="t">Impact</div><h3>Waarom we het doen</h3><p>Meer ruimte op het net, lagere kosten, een veiliger net.</p><div class="ex">→ daar worden we op afgerekend</div></div>
+  </div>
+  <div class="cite r" style="--d:6"><div class="av">JP</div><div><b>“Your job is to minimize output, and maximize outcome and impact.”</b>Jeff Patton, <i>User Story Mapping</i></div></div>
+  <aside class="notes"><span class="t">Definities · ~45 sec</span>Joshua Seiden definieert een outcome als <b>een verandering in gedrag die tot resultaat leidt</b>. Output is wat wij maken; outcome is wat er bij een ander verandert. AI maakt de linkerkolom bijna gratis. De middelste en rechterkolom gaan geen dag sneller: mensen veranderen niet in het tempo van een agent.</aside>
+</section>
+
+<section class="slide ch-5" data-ch="5">
+  <div class="split wide-r">
+    <div>
+      <div class="kicker r">De schaar</div>
+      <h2 class="r">Bouwen versnelt. <span class="hl">Valideren</span> niet.</h2>
+      <ul class="list">
+        <li class="r" style="--d:2"><b>Elke feature is een hypothese</b> tot je hebt gemeten dat hij werkt. Tot die tijd is het voorraad, en in Lean is voorraad verspilling.</li>
+        <li class="r" style="--d:3"><b>Mijn eigen app:</b> 344 PR's in 75 dagen, en precies één gebruiker die valideert: ik. Of ik fitter word van de coach, weet ik pas na de marathon.</li>
+        <li class="r" style="--d:4"><b>De bottleneck verschuift</b> naar meten, leren en beslissen. Wie de bouw blijft optimaliseren, optimaliseert de verkeerde stap.</li>
+      </ul>
+    </div>
+    <div class="r" style="--d:2">
+      <svg class="scissors" viewBox="0 0 600 380" role="img" aria-label="Grafiek: wat we kunnen bouwen stijgt steil, wat we kunnen valideren nauwelijks; het verschil is onbewezen voorraad">
+        <defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="rgba(255,122,69,.08)"/><line x1="0" y1="0" x2="0" y2="10" stroke="rgba(255,122,69,.45)" stroke-width="3"/></pattern></defs>
+        <g class="grid"><line x1="40" y1="340" x2="580" y2="340"/><line x1="40" y1="20" x2="40" y2="340"/></g>
+        <path class="gap" d="M40,330 C220,320 360,250 570,40 L570,262 C420,282 240,306 40,330 Z"/>
+        <path class="build" d="M40,330 C220,320 360,250 570,40"/>
+        <path class="valid" d="M40,330 C240,306 420,282 570,262"/>
+        <text class="lbl b" x="455" y="120" text-anchor="end">wat we kunnen bouwen</text>
+        <text class="lbl v" x="400" y="300">wat we kunnen valideren</text>
+        <text class="lbl g" x="420" y="200">onbewezen voorraad</text>
+        <text class="axis" x="40" y="362">2021</text><text class="axis" x="290" y="362">2025</text><text class="axis" x="540" y="362">2027</text>
+      </svg>
+      <p class="muted mono" style="font-size:.66em;margin-top:6px">Illustratie, geen meting</p>
+    </div>
+  </div>
+  <aside class="notes"><span class="t">De schaar · ~1 min</span>Dit is de kern. De bovenste lijn is wat we kunnen bouwen: die is in twee jaar door het dak gegaan. De onderste is wat we kunnen valideren: gebruikers spreken, data verzamelen, het effect op de business zien. Die lijn stijgt nauwelijks. Alles daartussen is <b>onbewezen voorraad</b>: software die af is, maar waarvan niemand weet of hij iets oplevert. Mijn eigen voorbeeld: 344 PR's, één gebruiker.</aside>
+</section>
+
+<section class="slide ch-5" data-ch="5">
+  <div class="kicker r">Wat het onderzoek zegt</div>
+  <h2 class="r wide">Meer output <span class="hl">voelt</span> als vooruitgang</h2>
+  <div class="evidence">
+    <div class="ev r" style="--d:1">
+      <div class="src">DORA · Accelerate State of DevOps 2024</div>
+      <div class="vs"><div class="big">−7,2%<small> stabiliteit</small></div><div class="big">−1,5%<small> doorvoer</small></div></div>
+      <p>Bij 25% meer AI-gebruik in teams. De verklaring: AI maakt het makkelijk om meer code tegelijk te schrijven, en grotere batches geven meer risico.</p>
+    </div>
+    <div class="ev r" style="--d:2">
+      <div class="src">METR · gerandomiseerde studie, 2025</div>
+      <div class="vs"><div class="big">19%<small> langzamer</small></div><div class="big">20%<small> sneller, dachten ze</small></div></div>
+      <p>Ervaren open-source developers aan hun eigen projecten, met en zonder AI. Ze waren trager, maar voelden zich sneller.</p>
+    </div>
+  </div>
+  <p class="callout r" style="--d:3">De modellen zijn sindsdien veel beter geworden; mijn eigen ervaring is anders. Maar het patroon blijft: <b>we meten wat we voelen en wat we opleveren, niet wat het oplevert.</b></p>
+  <aside class="notes"><span class="t">Onderzoek · ~1 min</span>Twee kanttekeningen die ik eerlijk wil maken: DORA meet teams, geen individuen, en METR is begin 2025 gedaan met de modellen van toen. Wat beide laten zien is niet dat AI slecht is, maar dat <b>gevoel en output slechte meetinstrumenten zijn</b>. Precies die meetinstrumenten gebruiken we in onze planning.</aside>
+</section>
+
+<section class="slide ch-5" data-ch="5">
+  <div class="kicker r">Waar SAFe kwetsbaar wordt</div>
+  <h2 class="r wide">Voorspelbaar leveren wordt <span class="hl">gratis</span>. En daarmee betekenisloos.</h2>
+  <div class="safe">
+    <div class="r" style="--d:1">
+      <div class="formula">
+        <div class="row">ART Predictability Measure =
+          <span class="frac"><span>actual business value</span><span>planned business value</span></span></div>
+        <div class="target">streefwaarde 80–100% · business value is een score van 1 tot 10, ingeschat door business owners bij PI-planning en beoordeeld aan het eind van de PI</div>
+        <div class="meter"><i></i></div>
+        <div class="meter-l"><span>0%</span><span>80%</span><span>100%: elke objective gehaald</span></div>
+      </div>
+      <p class="fair">Eerlijk is eerlijk: SAFe kent epic-hypotheses, leading indicators en OKR's. Maar in de praktijk draait Inspect &amp; Adapt vaak om de vraag of we geleverd hebben wat we beloofden, niet of het werkte.</p>
+    </div>
+    <ul class="list r" style="--d:2;margin-top:0">
+      <li><b>Met agents haal je elke PI-objective.</b> Predictability gaat naar 100%, en zegt dan niets meer over waarde.</li>
+      <li><b>Goodhart:</b> als een maat een doel wordt, is het geen goede maat meer. Delivery is altijd al een maat geweest; nu wordt hij ook nog makkelijk.</li>
+      <li><b>De score is een inschatting</b>, geen gemeten effect. Wie beoordeelt aan het eind van de PI of het in de praktijk iets veranderde?</li>
+      <li><b>Het ritme van de PI</b> (acht tot twaalf weken plannen) past bij een wereld waarin bouwen schaars was. Nu kan een epic in één nacht klaar zijn; het leren duurt nog steeds maanden.</li>
+    </ul>
+  </div>
+  <aside class="notes"><span class="t">SAFe · ~1,5 min · voorzichtig formuleren</span>Ik ben RTE, dus ik zeg dit van binnenuit. SAFe is niet het probleem; het is goed in afstemming en ritme. Maar de metriek die we het meest gebruiken, Predictability, meet of we onze <b>beloftes over output</b> nakomen. Als output bijna gratis wordt, gaat die metriek omhoog zonder dat er iets beters gebeurt. De vraag aan de zaal: <b>wie van jullie weet van de laatste PI welke feature welk effect had?</b></aside>
+</section>
+
+<section class="slide ch-5" data-ch="5">
+  <div class="split">
+    <div>
+      <div class="kicker r">Twee lussen</div>
+      <h2 class="r">De binnenste lus draait sneller. De buitenste is <span class="hl">gebroken</span>.</h2>
+      <ul class="list">
+        <li class="r" style="--d:2"><b>Delivery-lus:</b> idee, bouwen, testen, release. Was twee weken, wordt een nacht.</li>
+        <li class="r" style="--d:3"><b>Outcome-lus:</b> release, gebruik, meten, leren, bijsturen. Duurt maanden, en heeft vaak geen eigenaar.</li>
+        <li class="r" style="--d:4"><b>Het ART levert op, de business owner scoort, en dan begint de volgende PI.</b> Wie komt drie maanden later terug om te kijken of het werkte?</li>
+      </ul>
+    </div>
+    <svg class="loops r" style="--d:2" viewBox="0 0 560 580" role="img" aria-label="Een kleine snel draaiende delivery-lus binnen een grote outcome-lus met een onderbreking bij meten en leren">
+      <circle class="outer" cx="280" cy="280" r="220" stroke-dasharray="1100 282"/>
+      <path class="gapmark" d="M340.6,68.5 A220,220 0 0,1 500,280"/>
+      <circle class="inner" cx="280" cy="280" r="90"/>
+      <text x="280" y="272" text-anchor="middle">Delivery-lus</text>
+      <text class="sm" x="280" y="294" text-anchor="middle">uren, met agents</text>
+      <text x="165" y="125" text-anchor="middle">Idee</text>
+      <text x="80" y="286">Bouwen</text>
+      <text x="280" y="480" text-anchor="middle">Release</text>
+      <text x="392" y="398" text-anchor="middle">Gebruik</text>
+      <text class="warn" x="462" y="104">Leren?</text>
+      <text class="warn" x="506" y="200">Meten?</text>
+      <text class="sm warn" x="392" y="160" text-anchor="middle">wie is eigenaar?</text>
+      <text class="sm" x="280" y="572" text-anchor="middle">outcome-lus · maanden</text>
+    </svg>
+  </div>
+  <aside class="notes"><span class="t">Lussen · ~1 min</span>Vibe coding versnelt de binnenste lus enorm. Maar of iets waarde heeft, bepaalt de buitenste lus, en die heeft bij ons vaak een gat: na de release kijkt niemand structureel terug. Hoe sneller de binnenste lus draait, hoe meer er door dat gat lekt.</aside>
+</section>
+
+<section class="slide ch-5" data-ch="5">
+  <div class="kicker r">Wat het van ons vraagt</div>
+  <h2 class="r wide">Niet meer bouwen dan je kunt <span class="hl">valideren</span></h2>
+  <div class="asks">
+    <div class="ask r" style="--d:1"><div class="from">Definition of Done</div><h3>Definition of Learned</h3><p>Een feature is pas af als we weten of hij werkt: de leading indicator is gemeten, niet alleen de release gedaan.</p></div>
+    <div class="ask r" style="--d:2"><div class="from">WIP-limiet op bouwen</div><h3>WIP-limiet op onbewezen werk</h3><p>Zolang er te veel features wachten op validatie, bouwen we niets nieuws. Dat dwingt de lus dicht.</p></div>
+    <div class="ask r" style="--d:3"><div class="from">Ingeschatte business value</div><h3>Gemeten outcome</h3><p>PI-objectives als OKR's met meetbare indicatoren, en een vast moment ná de PI om terug te kijken.</p></div>
+    <div class="ask r" style="--d:4"><div class="from">Team draagt een backlog</div><h3>Team draagt een outcome</h3><p>Eigenaarschap over een resultaat, niet over een lijst. Dan vraagt een team zelf of het werkte.</p></div>
+    <div class="ask r" style="--d:5"><div class="from">Grote releases</div><h3>Kleine batches, snel meten</h3><p>Feature flags, telemetrie en experimenten. Precies wat DORA laat zien: kleinere batches zijn veiliger.</p></div>
+    <div class="ask r" style="--d:6"><div class="from">Predictability als doel</div><h3>Leren als doel</h3><p>Een PI waarin we iets bouwden dat niet werkte en daarvan leerden, is een goede PI.</p></div>
+  </div>
+  <aside class="notes"><span class="t">Wat het vraagt · ~1 min</span>Geen nieuw framework, wel andere accenten binnen wat we hebben. De belangrijkste: <b>een WIP-limiet op onbewezen werk</b>. Als bouwen gratis is, is het enige wat ons beschermt tegen een berg ongebruikte software een bewuste rem op starten. En: <b>Definition of Learned</b> naast de Definition of Done.</aside>
+</section>
+
+<section class="slide ch-5 center" data-ch="5">
+  <div class="kicker r" style="justify-content:center">Voor Change Delivery</div>
+  <p class="mega r" style="--d:1">We leveren <span class="muted">changes</span>.<br>Wie levert de <span class="hl">verandering</span>?</p>
+  <p class="lede r" style="--d:2;margin-inline:auto">Als iedereen kan bouwen, wordt het schaarse vak: bepalen wat de moeite waard is, meten of het werkte, en durven stoppen als het dat niet deed.</p>
+  <aside class="notes"><span class="t">Brug naar de toekomst · rond 25:00 ben je hier klaar</span>Een woordgrap met een kern: Change Delivery is goed in het leveren van changes. De vraag is wie eigenaar is van de <b>verandering</b> die die changes moeten veroorzaken. Daarmee naar het laatste hoofdstuk: wat betekent dit voor ons?</aside>
+</section>
+
+<!-- ======================= 06 TOEKOMST ======================= -->
+<section class="slide opener ch-6" data-ch="6" id="ch6">
+  <div class="num" data-parallax>06</div>
+  <div class="kicker r">Hoofdstuk 6 · 5 minuten</div>
+  <h2 class="r" style="--d:1">Waar gaat <span class="serif hl">dit</span> heen?</h2>
+</section>
+
+<section class="slide ch-6" data-ch="6">
   <div class="kicker r">Een tijdlijn die steeds sneller gaat</div>
   <h2 class="r wide">Van <span class="hl">hulpje</span> naar <span class="hl">collega</span> naar…?</h2>
   <div class="timeline">
@@ -562,10 +710,10 @@
     <div class="pt r" style="--d:4"><div class="y">2026</div><h3>Agentic engineering</h3><p>Agents sturen agents. Een PO met een team dat nooit slaapt.</p></div>
     <div class="pt q r" style="--d:5"><div class="y">2027 →</div><h3>?</h3><p>Software op aanvraag. Iedereen bouwt, overal.</p></div>
   </div>
-  <aside class="notes"><span class="t">05 · Tijdlijn · ~1 min</span>De stappen worden korter: van vier jaar naar één jaar naar maanden. Ik ga niet voorspellen wat er in 2027 komt, maar de richting is duidelijk: de afstand tussen idee en werkende software wordt bijna nul.</aside>
+  <aside class="notes"><span class="t">06 · Tijdlijn · ~1 min</span>De stappen worden korter: van vier jaar naar één jaar naar maanden. Ik ga niet voorspellen wat er in 2027 komt, maar de richting is duidelijk: de afstand tussen idee en werkende software wordt bijna nul.</aside>
 </section>
 
-<section class="slide ch-5" data-ch="5">
+<section class="slide ch-6" data-ch="6">
   <div class="kicker r">Wat betekent dit voor ons?</div>
   <h2 class="r wide">Drie vragen voor <span class="hl">Alliander</span></h2>
   <div class="impact">
@@ -600,7 +748,7 @@
   <aside class="notes"><span class="t">Impact · ~2 min</span>Drie kolommen, drie groepen in de zaal. Lees niet alles voor, kies per kolom één punt en stel de vraag onderaan. Voor Change Delivery: <b>mijn hobbyproject draaide 344 PR's in 75 dagen, met één persoon</b>. Wat gebeurt er als honderd mensen dat doen?</aside>
 </section>
 
-<section class="slide ch-5 center" data-ch="5">
+<section class="slide ch-6 center" data-ch="6">
   <div class="kicker r">De echte vraag</div>
   <p class="mega r" style="--d:1">Wanneer ben je <span class="strike">IT'er</span><br><span class="hl">nog</span> IT'er?</p>
   <div class="who-codes">
@@ -612,22 +760,23 @@
     <div class="r" style="--d:7"><div class="e">❓</div><b>Jouw collega</b><small>zonder dat je het weet</small></div>
   </div>
   <p class="lede r" style="--d:8;margin-inline:auto">Straks is iedereen aan het vibe coden. Dat is geen schaduw-IT meer, dat is gewoon werk. <b style="color:var(--ink)">Hoe zorgen we dat het veilig kan?</b></p>
-  <aside class="notes"><span class="t">Provocatie · ~1 min · rond 27:00 ben je hier klaar</span>Ik ben geen developer, en toch heb ik 750 commits in een productie-app. Hoeveel collega's bij Alliander doen dit al, met hun eigen ChatGPT- of Copilot-account, zonder dat wij het weten? Verbieden werkt niet. Wat wel? Platform, spelregels, pijplijnen. Dat is óns werk.</aside>
+  <aside class="notes"><span class="t">Provocatie · ~1 min · rond 29:00 ben je hier klaar</span>Ik ben geen developer, en toch heb ik 750 commits in een productie-app. Hoeveel collega's bij Alliander doen dit al, met hun eigen ChatGPT- of Copilot-account, zonder dat wij het weten? Verbieden werkt niet. Wat wel? Platform, spelregels, pijplijnen. Dat is óns werk.</aside>
 </section>
 
-<section class="slide ch-5" data-ch="5">
+<section class="slide ch-6" data-ch="6">
   <div class="kicker r">Om over te praten</div>
   <h2 class="r wide">Stellingen</h2>
   <ol class="theses">
     <li class="r" style="--d:1">Over twee jaar schrijft geen developer bij Alliander nog zelf code.</li>
     <li class="r" style="--d:2">De PO is de nieuwe bottleneck, niet de developer.</li>
     <li class="r" style="--d:3">Change management moet in de pijplijn zitten, niet in een overleg.</li>
-    <li class="r" style="--d:4">Iedere Allianderaar moet een agent kunnen aansturen, net als Excel.</li>
+    <li class="r" style="--d:4">Een feature zonder gemeten outcome is voorraad, geen waarde.</li>
+    <li class="r" style="--d:5">Zodra bouwen bijna gratis is, is voorspelbaarheid een gevaarlijke KPI.</li>
   </ol>
   <aside class="notes"><span class="t">Overgang naar Q&amp;A · 30:00</span>Laat de zaal kiezen: welke stelling wil je het eerst bespreken? Handen omhoog: eens of oneens. Daarmee start je de 20 minuten vragen.</aside>
 </section>
 
-<section class="slide end center ch-2" data-ch="5">
+<section class="slide end center ch-2" data-ch="6">
   <div class="kicker r" style="justify-content:center">Leren door te doen</div>
   <h2 class="r" style="--d:1;font-size:clamp(60px,10vw,200px);max-width:none">Vragen<span class="hl">?</span></h2>
   <p class="lede r" style="--d:2;margin-inline:auto">Begin gewoon. Claude Code, Codex, Copilot, Cursor of Jules. Kies iets wat je zelf wilt gebruiken.</p>

@@ -235,6 +235,8 @@ const SCENES = {
    */
   async phk() {
     const BASE = process.env.PHK_URL || 'http://localhost:5174/';
+    // Alleen een deel opnemen, bijvoorbeeld PHK_DELEN=gevecht (om te testen)
+    const DELEN = (process.env.PHK_DELEN || 'stad,lopen,gevecht,gesprek').split(',');
     const rec = await open({ port: 9456, gpu: true });
     const enter = async (query) => {
       await rec.go(BASE + query, 800);
@@ -253,94 +255,119 @@ const SCENES = {
       await rec.go(BASE);
       await rec.run("localStorage.setItem('instellingen', JSON.stringify({ taal: 'nl', geluidAan: false, kwaliteit: 'hoog' })); localStorage.setItem('gevecht-tempo', '1'); 1");
 
-      // 1 — Whitestone van bovenaf: één rustige, gelijkmatige draai (geen zoomstappen).
-      console.log('  stad');
-      await enter('?plek=whitestone&nep-timers');
-      await middag(14);
-      await rec.forward(30);
-      await rec.mouse('mouseMoved', 900, 520);
-      await rec.mouse('mousePressed', 900, 520);
-      for (let i = 0; i < 8; i++) { await rec.mouse('mouseMoved', 900 - i * 2, 520, { buttons: 1 }); await rec.forward(1); }
-      await rec.record(sec(5), '', {
-        between: async (i) => rec.mouse('mouseMoved', 884 - i * 2, 520, { buttons: 1 }),
-      });
-      await rec.mouse('mouseReleased', 884 - sec(5) * 2, 520);
+      if (DELEN.includes('stad')) {
+        // 1 — Whitestone van bovenaf: één rustige, gelijkmatige draai (geen zoomstappen).
+        console.log('  stad');
+        await enter('?plek=whitestone&nep-timers');
+        await middag(14);
+        await rec.forward(30);
+        await rec.mouse('mouseMoved', 900, 520);
+        await rec.mouse('mousePressed', 900, 520);
+        for (let i = 0; i < 8; i++) { await rec.mouse('mouseMoved', 900 - i * 2, 520, { buttons: 1 }); await rec.forward(1); }
+        await rec.record(sec(5), '', {
+          between: async (i) => rec.mouse('mouseMoved', 884 - i * 2, 520, { buttons: 1 }),
+        });
+        await rec.mouse('mouseReleased', 884 - sec(5) * 2, 520);
 
-      // 2 — Te voet door de winkelstraat (de straat met de meeste winkels, aan de
-      // zuidkant van het plein), met de camera laag achter de groep. Op het plein
-      // kantelt de camera langzaam omhoog naar de Sun Tree.
-      console.log('  lopen');
-      await enter('?plek=whitestone&lopen&nep-timers&start=1.7,19&kijk=0,3,12');
-      await middag(12);
-      await rec.forward(30);
-      const key = (type, k = 'w') => rec.run(`window.dispatchEvent(new KeyboardEvent('${type}', { key: '${k}', code: 'Key${k.toUpperCase()}', bubbles: true })); 1`);
-      await key('keydown');
-      await rec.forward(sec(0.3));
-      await rec.record(sec(5));
-      const KANTEL = sec(2.2);
-      await rec.mouse('mouseMoved', 640, 600);
-      await rec.mouse('mousePressed', 640, 600);
-      await rec.record(KANTEL, '', { between: (i) => rec.mouse('mouseMoved', 640, 600 - i * 1.4, { buttons: 1 }) });
-      await rec.mouse('mouseReleased', 640, 600 - KANTEL * 1.4);
-      await key('keyup');
-      await rec.record(sec(0.8));
-
-      // 3 — Een gevecht: drie spreuken van dichtbij. Ook de timers van het spel lopen
-      // op de nepklok (?nep-timers), dus elke beurt loopt vloeiend en voorspelbaar.
-      console.log('  gevecht');
-      await enter('?plek=gevecht&nep-timers');
-      await rec.forward(20);
-      const kies = () => rec.run(`(() => {
-        if (!/is aan de beurt/.test(document.body.innerText)) return null;
-        const btns = [...document.querySelectorAll('button')].filter(b => b.offsetParent);
-        const spell = btns.find(b => /Fire Bolt|Magic Missile|Sacred Flame|Eldritch|Ray of/i.test(b.textContent));
-        const atk = spell || btns.find(b => /bow|Javelin|Handaxe/i.test(b.textContent));
-        const foes = [...document.querySelectorAll('body *')].filter(e => e.children.length === 0 && !e.className
-          && /^(Skelet|Zombie)( \\d)?$/.test(e.textContent.trim()))
-          .map(e => { const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height + 50]; })
-          .sort((a, b) => b[1] - a[1]);
-        if (!atk || !foes.length) { btns.find(b => b.textContent.includes('Beurt klaar'))?.click(); return 'klaar'; }
-        atk.click();
-        return { at: foes[0], spreuk: !!spell };
-      })()`);
-      const klaar = () => rec.run("[...document.querySelectorAll('button')].find(b => b.textContent.includes('Beurt klaar'))?.click(); 1");
-      let spreuken = 0;
-      for (let stap = 0; stap < 40 && spreuken < 3; stap++) {
-        const k = await kies();
-        if (k && k.at) {
-          if (k.spreuk) {
-            await rec.record(8);
-            await rec.click(k.at[0], k.at[1]);
-            await rec.record(sec(1.8));
-            spreuken++;
-          } else {
-            await rec.forward(6);
-            await rec.click(k.at[0], k.at[1]);
-            await rec.forward(sec(1.5));
-          }
-          await klaar();
-        }
-        await rec.forward(sec(1));
       }
 
-      // 4 — Een gesprek met Del, live door Gemini geschreven.
-      console.log('  gesprek');
-      await enter('?plek=herberg');
-      await rec.run("document.querySelector('.npc-label').click(); 1");
-      await rec.wait("/Del/.test(document.querySelector('[class*=gesprek]')?.innerText ?? '') && !!document.querySelector('[class*=gesprek] *')", 20000);
-      await rec.wait("(document.querySelector('[class*=gesprek]')?.innerText.length ?? 0) > 160", 30000);
-      const vraag = 'Goedenavond Del! Wat is het laatste nieuws in Whitestone?';
-      await rec.record(vraag.length + sec(0.6), '', {
-        realtime: true,
-        between: async (i) => {
-          if (i < vraag.length) {
-            await rec.run(`(() => { const inp = [...document.querySelectorAll('input')].find(e => /Del/.test(e.placeholder));
-              inp.value = ${JSON.stringify(vraag)}.slice(0, ${i + 1}); return 1; })()`);
+      if (DELEN.includes('lopen')) {
+        // 2 — Te voet door de winkelstraat (de straat met de meeste winkels, aan de
+        // zuidkant van het plein). De groep loopt door te klikken (het spel zoekt zelf
+        // de weg); op het plein draait de camera in een zachte boog van 180 graden,
+        // zodat je eindigt met de gezichten van de helden en de winkelstraat erachter.
+        console.log('  lopen');
+        await enter('?plek=whitestone&lopen&nep-timers&start=1.7,19&kijk=0,2.6,9');
+        await middag(12);
+        await rec.forward(30);
+        await rec.click(645, 150);
+        await rec.record(sec(3.5));
+        await rec.click(640, 200);
+        await rec.record(sec(1.2));
+        const DRAAI = sec(4.8), BOOG = 400;   // 400 px slepen is een halve slag bij 800 px hoogte
+        await rec.mouse('mouseMoved', 640, 520);
+        await rec.mouse('mousePressed', 640, 520);
+        await rec.record(DRAAI, '', {
+          between: (i) => {
+            const t = (i + 1) / DRAAI, zacht = (1 - Math.cos(Math.PI * t)) / 2;
+            return rec.mouse('mouseMoved', 640 + BOOG * zacht, 520, { buttons: 1 });
+          },
+        });
+        await rec.mouse('mouseReleased', 640 + BOOG, 520);
+        await rec.record(sec(1));
+
+      }
+
+      if (DELEN.includes('gevecht')) {
+        // 3 — Een gevecht: drie spreuken van dichtbij. Ook de timers van het spel lopen
+        // op de nepklok (?nep-timers), dus elke beurt loopt vloeiend en voorspelbaar.
+        console.log('  gevecht');
+        await enter('?plek=gevecht&nep-timers');
+        await rec.forward(20);
+        const kies = () => rec.run(`(() => {
+          if (!/is aan de beurt/.test(document.body.innerText)) return null;
+          const btns = [...document.querySelectorAll('button')].filter(b => b.offsetParent);
+          const spell = btns.find(b => /Fire Bolt|Magic Missile|Sacred Flame|Eldritch|Ray of/i.test(b.textContent));
+          const atk = spell || btns.find(b => /bow|Javelin|Handaxe/i.test(b.textContent));
+          const foes = [...document.querySelectorAll('body *')].filter(e => e.children.length === 0 && !e.className
+            && /^(Skelet|Zombie)( \\d)?\\b/.test(e.textContent.trim()) && e.textContent.trim().length < 14)
+            .map(e => { const r = e.getBoundingClientRect(); return [r.x + r.width / 2, r.y + r.height + 50]; })
+            .sort((a, b) => b[1] - a[1]);
+          // Sinds de update zitten aanvallen en spreuken in uitklapmenu's: klap ze een voor
+          // een open (niet 'Bewegen') tot er een spreuk zichtbaar is.
+          const beurt = (document.body.innerText.match(/[^\\n]{0,40}is aan de beurt/) || [''])[0];
+          if (window.__beurt !== beurt) { window.__beurt = beurt; window.__open = []; }
+          const dicht = btns.find(b => /▾/.test(b.textContent) && !/Bewegen/.test(b.textContent) && !window.__open.includes(b.textContent));
+          if (!spell && dicht) { window.__open.push(dicht.textContent); dicht.click(); return 'menu'; }
+          if (!atk || !foes.length) { btns.find(b => b.textContent.includes('Beurt klaar'))?.click(); return 'klaar'; }
+          atk.click();
+          return { at: foes[0], spreuk: !!spell };
+        })()`);
+        const klaar = () => rec.run("[...document.querySelectorAll('button')].find(b => b.textContent.includes('Beurt klaar'))?.click(); 1");
+        let spreuken = 0;
+        for (let stap = 0; stap < 90 && spreuken < 3; stap++) {
+          const k = await kies();
+          if (process.env.DEBUG) console.error('   kies', JSON.stringify(k));
+          if (k === 'menu') { await rec.forward(4); continue; }
+          if (k && typeof k === "object" && Array.isArray(k.at)) {
+            if (k.spreuk) {
+              await rec.record(8);
+              await rec.click(k.at[0], k.at[1]);
+              await rec.record(sec(1.8));
+              spreuken++;
+            } else {
+              await rec.forward(6);
+              await rec.click(k.at[0], k.at[1]);
+              await rec.forward(sec(1.5));
+            }
+            await klaar();
           }
-        },
-      });
-      await rec.run("[...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Zeg').click(); 1");
-      await rec.record(sec(5.5), '', { realtime: true });
+          await rec.forward(sec(1));
+        }
+
+      }
+
+      if (DELEN.includes('gesprek')) {
+        // 4 — Een gesprek met Del, live door Gemini geschreven.
+        console.log('  gesprek');
+        await enter('?plek=herberg');
+        await rec.run("document.querySelector('.npc-label').click(); 1");
+        await rec.wait("/Del/.test(document.querySelector('[class*=gesprek]')?.innerText ?? '') && !!document.querySelector('[class*=gesprek] *')", 20000);
+        await rec.wait("(document.querySelector('[class*=gesprek]')?.innerText.length ?? 0) > 160", 30000);
+        const vraag = 'Goedenavond Del! Wat is het laatste nieuws in Whitestone?';
+        await rec.record(vraag.length + sec(0.6), '', {
+          realtime: true,
+          between: async (i) => {
+            if (i < vraag.length) {
+              await rec.run(`(() => { const inp = [...document.querySelectorAll('input')].find(e => /Del/.test(e.placeholder));
+                inp.value = ${JSON.stringify(vraag)}.slice(0, ${i + 1}); return 1; })()`);
+            }
+          },
+        });
+        await rec.run("[...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Zeg').click(); 1");
+        await rec.record(sec(5.5), '', { realtime: true });
+      }
+
       rec.encode(path.join(VIDEO, 'prompt-machina.mp4'));
     } finally { await rec.close(); }
   },

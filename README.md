@@ -12,11 +12,8 @@ Een scroll-presentatie in HTML voor collega's bij Digital Delivery (Alliander), 
 | 02 · Hoe ik begon | Van een Gemini-abonnement voor een spreekbeurt naar een iOS-app met 756 commits, en hoe security en kwaliteit worden afgedwongen |
 | 03 · De games | WebSoccer, WebRacing, WebType, WebTrack, Article 5 en Prompt Machina, met video's |
 | 04 · Learnings | Snel bouwen, steeds betere modellen, samenwerken, en waar de bottleneck nu zit |
-| 05 · De toekomst | Wat dit betekent voor developers, scrum-teams en Change Delivery |
-
-### ✏️ [Concept: met een hoofdstuk over output versus outcome](https://markclausing.github.io/presentaties/vibe-coding-concept/)
-
-Een conceptversie met een extra hoofdstuk: vibe coding maakt output bijna gratis, maar het valideren van de echte outcome gaat er niet sneller van. Wat betekent dat voor een werkwijze als SAFe, met de nadruk op voorspelbaarheid en delivery? Met DORA 2024, METR 2025 en de ART Predictability Measure.
+| 05 · Output ≠ outcome | Output is bijna gratis geworden, outcome valideren niet. Wat dat betekent voor een werkwijze als SAFe, met de nadruk op voorspelbaarheid en delivery (met DORA 2024, METR 2025 en de ART Predictability Measure) |
+| 06 · De toekomst | Wat dit betekent voor developers, scrum-teams en Change Delivery |
 
 Presenteren: pijltjes of spatie om door te gaan, `N` voor sprekersnotities, `T` voor de timer, `L` om een game live te spelen, `?` voor alle toetsen. Meer in [vibe-coding/README.md](vibe-coding/README.md).
 

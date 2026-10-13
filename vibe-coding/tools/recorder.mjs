@@ -87,7 +87,7 @@ class Devtools {
       const pending = this.waiting.get(msg.id);
       if (!pending) return;
       this.waiting.delete(msg.id);
-      if (msg.error) pending.reject(new Error(msg.error.message));
+      if (msg.error) pending.reject(new Error(`${pending.method}: ${msg.error.message} ${msg.error.data ?? ''}`));
       else pending.resolve(msg.result);
     };
   }
@@ -95,7 +95,7 @@ class Devtools {
   send(method, params = {}) {
     const id = ++this.id;
     return new Promise((resolve, reject) => {
-      this.waiting.set(id, { resolve, reject });
+      this.waiting.set(id, { resolve, reject, method: `${method} ${JSON.stringify(params).slice(0, 160)}` });
       this.socket.send(JSON.stringify({ id, method, params }));
     });
   }

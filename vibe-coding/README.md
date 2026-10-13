@@ -14,7 +14,7 @@ Dubbelklikken op `index.html` werkt ook. Alleen de lettertypes (Google Fonts), G
 |---|---|
 | `→` `↓` `spatie` `PgDn` | volgende (werkt ook met een presenter-clicker) |
 | `←` `↑` `PgUp` | vorige |
-| `1`–`5` / `0` | spring naar hoofdstuk / begin |
+| `1`–`6` / `0` | spring naar hoofdstuk / begin |
 | `N` | sprekersnotities (met tijdsindicatie per slide) |
 | `T` / `R` | timer starten-pauzeren / resetten. Een hoofdstuk kleurt roze als je over je budget gaat |
 | `L` | game op de huidige slide live spelen (iframe) |
